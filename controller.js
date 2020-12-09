@@ -43,12 +43,23 @@ app.controller("addController",function ($scope,$http) {
 				}
 		}
 
-
-		$http(req_add).then(function(response) {
-			$http(req).then(function(response) {
-				$scope.products = response.data;
-			}, onError);
+		var exist = false;
+        $scope.products.forEach(element => {
+            if(element.msg === $scope.addMe){
+                exist = true;
+            }
+        });
+        if(exist === false){
+            $http(req_add).then(function(response) {
+				$http(req).then(function(response) {
+					$scope.products = response.data;
+				}, onError);
 		}, onError);
+        }else{
+            $scope.errorText = "This item already exist in your Todo List!";
+        }
+		
+		
 		
 		
 		/*
