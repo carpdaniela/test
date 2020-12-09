@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="addList" lang="en" data-ng-app xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>To Do list</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <script src="controller.js"></script>
+    </head>
+    <body>
+        <div class="main"  data-ng-controller="addController">
+            <h1>Todo List</h1>
+            <div class="search">
+                <input type="text" placeholder="Add todo" data-ng-model="addMe">
+                <span data-ng-click="addItem()"><i class="fas fa-plus"></i></span>
+            </div>
+            <ul>
+                <li data-ng-repeat="x in products">
+                    <input type="checkbox" class="regular-checkbox" data-ng-model="products[$index].done" id="check1" data-ng-checked="x.done" data-ng-change="changeState($index)">
+                    <label for="check1" class="label-for-check" data-ng-model="x.msg">{{x.msg}}</label>
+                    <i data-ng-click="removeItem($index)" class="fas fa-trash-alt"></i>
+                </li>
+            </ul>
+            <p>{{errorText}}</p>
+        </div>
+    </body>
+</html>
