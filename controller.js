@@ -48,9 +48,7 @@ app.controller("addController",function ($scope,$http) {
         });
         if(exist === false){
             $http(req_add).then(function(response) {
-				//$http(req).then(function(response) {
 					$scope.products = response.data;
-				//}, onError);
 		}, onError);
         }else{
             $scope.errorText = "This item already exist in your Todo List!";
@@ -77,29 +75,29 @@ app.controller("addController",function ($scope,$http) {
 		$http(req_del).then(function(response) {
 			$scope.products = response.data;
 			
-			/*console.log($scope.products);
-			
-			var index = $scope.products.indexOf(todo);
-			console.log(index);
-			$scope.products.splice(index, 1);  */
-			
 		}, onError);
 		
 		
     }
 	
-    $scope.changeState = function(index) {
-        console.log("status changed for: ".concat(index));
-        console.log("before update = ".concat($scope.products));
-        console.log("length= ".concat($scope.products.length));
+    $scope.changeState = function(todo) {
+        console.log("status changed for: ".concat(todo.msg));
 
-        for (var i=0; i < $scope.products.length; i++) {
-            //if (i == index) {
-                //$scope.products[i].status = !$scope.products[i].status;
-                console.log($scope.products[i]);
-               // break;
-            //}
-        }
+		var req_update = {
+			method: 'PUT',
+			url: 'http://localhost:1323/todos/'.concat(todo.msg,'/',!todo.done),
+			headers: {
+				'Origin': "localhost:1323"
+			}
+		}
+
+		console.log(req_update.url);
+
+		$http(req_update).then(function(response) {
+			$scope.products = response.data;
+			
+		}, onError);
+       
     }
 });
 function changeState (item){
