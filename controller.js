@@ -60,11 +60,11 @@ app.controller("addController",function ($scope,$http) {
         console.log("deleting");
         //$scope.products.splice(index,1);
 		
-		todo.msg = todo.msg.replaceAll(" ", "%20");
+		var newMsg = todo.msg.replaceAll(" ", "%20");
 		
 		var req_del = {
 		 method: 'DELETE',
-		 url: 'http://localhost:1323/todos/'.concat(todo.msg),
+		 url: 'http://localhost:1323/todos/'.concat(newMsg),
 		 headers: {
 		   'Origin': "localhost:1323"
 			}
@@ -87,11 +87,11 @@ app.controller("addController",function ($scope,$http) {
 		
 		console.log($scope.products);
 		
-		todo.msg = todo.msg.replaceAll(" ", "%20");
+		var newMsg = todo.msg.replaceAll(" ", "%20");
 
 		var req_update = {
 			method: 'PUT',
-			url: 'http://localhost:1323/todos/'.concat(todo.msg,'/',todo.done),
+			url: 'http://localhost:1323/todos/'.concat(newMsg,'/',todo.done),
 			headers: {
 				'Origin': "localhost:1323"
 			}
