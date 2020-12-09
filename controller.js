@@ -1,5 +1,5 @@
 var app =  angular.module("addList",[]);
-app.controller("addController",function ($scope) {
+app.controller("addController",function ($scope,$http) {
     $scope.products = [
         {
             text:"Go to gym",
