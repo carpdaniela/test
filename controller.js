@@ -84,6 +84,8 @@ app.controller("addController",function ($scope,$http) {
         console.log("status changed for: ".concat(todo.msg));
 		console.log("status is: ".concat(todo.done));
 		
+		console.log($scope.products);
+		
 		var done = false
 		if(todo.done == false){
 			done = true;
