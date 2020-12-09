@@ -1,19 +1,5 @@
 var app =  angular.module("addList",[]);
 app.controller("addController",function ($scope,$http) {
-    $scope.products = [
-        {
-            text:"Go to gym",
-            status:true
-        },
-        {
-            text:"Do your homework",
-            status:true
-        },
-        {
-            text:"Make a pizza",
-            status: false
-        }
-    ];
 	
 	
 	var onSuccess = function (data, status, headers, config) {
@@ -25,7 +11,9 @@ app.controller("addController",function ($scope,$http) {
 		$scope.errorText = status;
 	}
 
-	$http.get("http://localhost:1323/todos").then(onSuccess, onError);
+	$http.get("http://localhost:1323/todos").then(function(response) {
+		$scope.products = response.data;
+	}, onError);
 	
 	
 	
