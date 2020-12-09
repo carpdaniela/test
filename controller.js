@@ -45,7 +45,9 @@ app.controller("addController",function ($scope,$http) {
 
 
 		$http(req_add).then(function(response) {
-			$scope.products.push({msg:$scope.addMe,done:false});
+			$http(req).then(function(response) {
+				$scope.products = response.data;
+			}, onError);
 		}, onError);
 		
 		
