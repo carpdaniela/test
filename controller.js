@@ -11,7 +11,17 @@ app.controller("addController",function ($scope,$http) {
 		$scope.errorText = status;
 	}
 
-	$http.get("http://localhost:1323/todos").then(function(response) {
+
+	var req = {
+		 method: 'GET',
+		 url: 'http://localhost:1323/todos',
+		 headers: {
+		   'Origin': "localhost:1323"
+		 }
+	}
+
+
+	$http(req).then(function(response) {
 		$scope.products = response.data;
 	}, onError);
 	
