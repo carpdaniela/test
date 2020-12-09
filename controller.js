@@ -34,6 +34,22 @@ app.controller("addController",function ($scope,$http) {
             return;
         }
 
+
+		var req_add = {
+			 method: 'POST',
+			 url: 'http://localhost:1323/todos/'.concat($scope.addMe,'false'),
+			 headers: {
+			   'Origin': "localhost:1323"
+				}
+		}
+
+
+		$http(req_add).then(function(response) {
+			$scope.products.push({msg:$scope.addMe,done:false});
+		}, onError);
+		
+		
+		/*
         var exist = false;
         $scope.products.forEach(element => {
             if(element.text === $scope.addMe){
@@ -45,6 +61,7 @@ app.controller("addController",function ($scope,$http) {
         }else{
             $scope.errorText = "This item already exist in your Todo List!";
         }
+		*/
     }
     $scope.removeItem = function(index) {
         console.log("deleting");
