@@ -25,7 +25,7 @@ app.controller("addController",function ($scope,$http) {
 		$scope.errorText = status;
 	}
 
-	$http.get("http://localhost:1323/todos").success(onSuccess).error(onError);
+	$http.get("http://localhost:1323/todos").then(onSuccess, onError);
 	
 	
 	
