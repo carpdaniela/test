@@ -77,8 +77,10 @@ app.controller("addController",function ($scope,$http) {
 		$http(req_del).then(function(response) {
 			$scope.products = response.data;
 			
+			console.log($scope.products);
 			
 			var index = $scope.products.indexOf(todo);
+			console.log(index);
 			$scope.products.splice(index, 1);  
 			
 		}, onError);
