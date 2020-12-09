@@ -37,7 +37,7 @@ app.controller("addController",function ($scope,$http) {
 
 		var req_add = {
 			 method: 'POST',
-			 url: 'http://localhost:1323/todos/'.concat($scope.addMe,'false'),
+			 url: 'http://localhost:1323/todos/'.concat($scope.addMe,'/false'),
 			 headers: {
 			   'Origin': "localhost:1323"
 				}
