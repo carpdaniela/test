@@ -82,10 +82,12 @@ app.controller("addController",function ($scope,$http) {
 	
     $scope.changeState = function(todo) {
         console.log("status changed for: ".concat(todo.msg));
+		
+		var done = !todo.done;
 
 		var req_update = {
 			method: 'PUT',
-			url: 'http://localhost:1323/todos/'.concat(todo.msg,'/',!todo.done),
+			url: 'http://localhost:1323/todos/'.concat(todo.msg,'/',done),
 			headers: {
 				'Origin': "localhost:1323"
 			}
