@@ -65,8 +65,6 @@ app.controller("addController",function ($scope,$http) {
             //}
         }
     }
-	
-	loadData();
 });
 function changeState (item){
     alert("hello");
