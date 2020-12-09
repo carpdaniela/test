@@ -95,6 +95,7 @@ app.controller("addController",function ($scope,$http) {
 
 		$http(req_update).then(function(response) {
 			$scope.products = response.data;
+			console.log($scope.products);
 			
 		}, onError);
        
