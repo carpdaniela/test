@@ -76,6 +76,19 @@ app.controller("addController",function ($scope,$http) {
 
 		$http(req_del).then(function(response) {
 			$scope.products = response.data;
+			
+			var req = {
+				 method: 'GET',
+				 url: 'http://localhost:1323/todos',
+				 headers: {
+				   'Origin': "localhost:1323"
+				 }
+			}
+
+			$http(req).then(function(response) {
+				$scope.products = response.data;
+			}, onError);
+			
 		}, onError);
 		
 		

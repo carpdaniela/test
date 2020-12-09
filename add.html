@@ -18,7 +18,7 @@
             <ul>
                 <li data-ng-repeat="x in products track by $index">
                     <input type="checkbox" class="regular-checkbox" data-ng-model="products[$index].done" id="check1" data-ng-checked="x.done" data-ng-change="changeState($index)">
-                    <label for="check1" class="label-for-check" data-ng-model="x.msg">{{x.msg}} {{$index}}</label>
+                    <label for="check1" class="label-for-check" data-ng-model="x.msg">{{x.msg}} {{$index}}  {{products.length}}</label>
                     <i data-ng-click="removeItem(x.msg)" class="fas fa-trash-alt"></i>
                 </li>
             </ul>
