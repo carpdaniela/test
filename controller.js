@@ -48,9 +48,9 @@ app.controller("addController",function ($scope,$http) {
         });
         if(exist === false){
             $http(req_add).then(function(response) {
-				$http(req).then(function(response) {
+				//$http(req).then(function(response) {
 					$scope.products = response.data;
-				}, onError);
+				//}, onError);
 		}, onError);
         }else{
             $scope.errorText = "This item already exist in your Todo List!";
@@ -75,13 +75,13 @@ app.controller("addController",function ($scope,$http) {
 
 
 		$http(req_del).then(function(response) {
-			//$scope.products = response.data;
+			$scope.products = response.data;
 			
-			console.log($scope.products);
+			/*console.log($scope.products);
 			
 			var index = $scope.products.indexOf(todo);
 			console.log(index);
-			$scope.products.splice(index, 1);  
+			$scope.products.splice(index, 1);  */
 			
 		}, onError);
 		
