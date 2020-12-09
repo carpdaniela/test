@@ -58,14 +58,14 @@ app.controller("addController",function ($scope,$http) {
 	
     }
 	
-    $scope.removeItem = function(index) {
+    $scope.removeItem = function(msg) {
         console.log("deleting");
         //$scope.products.splice(index,1);
 		
 		
 		var req_del = {
 		 method: 'DELETE',
-		 url: 'http://localhost:1323/todos/'.concat($scope.addMe),
+		 url: 'http://localhost:1323/todos/'.concat(msg),
 		 headers: {
 		   'Origin': "localhost:1323"
 			}
