@@ -60,6 +60,7 @@ app.controller("addController",function ($scope,$http) {
         console.log("deleting");
         //$scope.products.splice(index,1);
 		
+		todo.msg.replace(" ", "%20");
 		
 		var req_del = {
 		 method: 'DELETE',
@@ -85,6 +86,8 @@ app.controller("addController",function ($scope,$http) {
 		console.log("status is: ".concat(todo.done));
 		
 		console.log($scope.products);
+		
+		todo.msg.replace(" ", "%20");
 
 		var req_update = {
 			method: 'PUT',
