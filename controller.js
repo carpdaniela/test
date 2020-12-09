@@ -11,7 +11,6 @@ app.controller("addController",function ($scope,$http) {
 		$scope.errorText = status;
 	}
 
-
 	var req = {
 		 method: 'GET',
 		 url: 'http://localhost:1323/todos',
@@ -20,11 +19,9 @@ app.controller("addController",function ($scope,$http) {
 		 }
 	}
 
-
 	$http(req).then(function(response) {
 		$scope.products = response.data;
 	}, onError);
-	
 	
 	
     $scope.addItem = function() {
@@ -58,28 +55,30 @@ app.controller("addController",function ($scope,$http) {
         }else{
             $scope.errorText = "This item already exist in your Todo List!";
         }
-		
-		
-		
-		
-		/*
-        var exist = false;
-        $scope.products.forEach(element => {
-            if(element.text === $scope.addMe){
-                exist = true;
-            }
-        });
-        if(exist === false){
-            $scope.products.push({text:$scope.addMe});
-        }else{
-            $scope.errorText = "This item already exist in your Todo List!";
-        }
-		*/
+	
     }
+	
     $scope.removeItem = function(index) {
         console.log("deleting");
-        $scope.products.splice(index,1);
+        //$scope.products.splice(index,1);
+		
+		
+		var req_del = {
+		 method: 'DELETE',
+		 url: 'http://localhost:1323/todos/'.concat($scope.addMe),
+		 headers: {
+		   'Origin': "localhost:1323"
+			}
+		}
+
+
+		$http(req_del).then(function(response) {
+			$scope.products = response.data;
+		}, onError);
+		
+		
     }
+	
     $scope.changeState = function(index) {
         console.log("status changed for: ".concat(index));
         console.log("before update = ".concat($scope.products));
