@@ -83,7 +83,10 @@ app.controller("addController",function ($scope,$http) {
     $scope.changeState = function(todo) {
         console.log("status changed for: ".concat(todo.msg));
 		
-		var done = !todo.done;
+		var done = false
+		if(todo.done == false){
+			done = true;
+		}
 
 		var req_update = {
 			method: 'PUT',
