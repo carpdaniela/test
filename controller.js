@@ -70,6 +70,8 @@ app.controller("addController",function ($scope,$http) {
 		   'Origin': "localhost:1323"
 			}
 		}
+		
+		console.log(req_del.url);
 
 
 		$http(req_del).then(function(response) {
