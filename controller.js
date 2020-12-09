@@ -85,15 +85,10 @@ app.controller("addController",function ($scope,$http) {
 		console.log("status is: ".concat(todo.done));
 		
 		console.log($scope.products);
-		
-		var done = false
-		if(todo.done == false){
-			done = true;
-		}
 
 		var req_update = {
 			method: 'PUT',
-			url: 'http://localhost:1323/todos/'.concat(todo.msg,'/',done),
+			url: 'http://localhost:1323/todos/'.concat(todo.msg,'/',todo.done),
 			headers: {
 				'Origin': "localhost:1323"
 			}
