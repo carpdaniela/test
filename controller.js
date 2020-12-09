@@ -15,17 +15,18 @@ app.controller("addController",function ($scope) {
         }
     ];
 	
-	function loadData(){
-		var onSuccess = function (data, status, headers, config) {
-                $scope.products = data;
-            };
+	
+	var onSuccess = function (data, status, headers, config) {
+			$scope.products = data.data;
+			console.log($scope.products);
+		};
 
-            var onError = function (data, status, headers, config) {
-                $scope.errorText = status;
-            }
-        
-            var promise = $http.get("localhost:1323/todos").success(onSuccess).error(onError);
+	var onError = function (data, status, headers, config) {
+		$scope.errorText = status;
 	}
+
+	$http.get("http://localhost:1323/todos").success(onSuccess).error(onError);
+	
 	
 	
     $scope.addItem = function() {
