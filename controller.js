@@ -82,6 +82,7 @@ app.controller("addController",function ($scope,$http) {
 	
     $scope.changeState = function(todo) {
         console.log("status changed for: ".concat(todo.msg));
+		console.log("status is: ".concat(todo.done));
 		
 		var done = false
 		if(todo.done == false){
