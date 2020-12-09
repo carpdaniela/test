@@ -75,7 +75,7 @@ app.controller("addController",function ($scope,$http) {
 
 
 		$http(req_del).then(function(response) {
-			$scope.products = response.data;
+			//$scope.products = response.data;
 			
 			console.log($scope.products);
 			
