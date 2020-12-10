@@ -64,7 +64,7 @@ app.controller("addController",function ($scope,$http) {
 	
 		var req_del = {
 			method: 'DELETE',
-			url: 'http://localhost:3000/todos/remove/?msg='+newMsg,  //.concat(newMsg)
+			url: 'http://localhost:3000/todos/remove/?msg='+todo.msg,  //.concat(newMsg)
 		}
 		
 		console.log(req_del);
@@ -85,7 +85,7 @@ app.controller("addController",function ($scope,$http) {
 
 		var req_update = {
 			method: 'PUT',
-			url: 'http://localhost:3000/todos/update/?msg='+newMsg+"&done="+todo.done, //.concat(newMsg,'/',todo.done)
+			url: 'http://localhost:3000/todos/update/?msg='+todo.msg+"&done="+todo.done, //.concat(newMsg,'/',todo.done)
 		}
 		
 		console.log(req_update);
