@@ -11,20 +11,19 @@ app.controller("addController",function ($scope,$http) {
 		$scope.errorText = status;
 	}
 
-	var loadInitialData = function{
-		
-		var req = {
-			 method: 'GET',
-			 url: 'http://localhost:3000/todos',
-			 headers: {
-			   'Origin': "localhost:3000"
-			 }
-		}
-		
-		$http(req).then(function(response) {
-			$scope.products = response.data;
-		}, onError);
+	var req = {
+		 method: 'GET',
+		 url: 'http://localhost:3000/todos',
+		 headers: {
+		   'Origin': "localhost:3000"
+		 }
 	}
+
+	
+	$http(req).then(function(response) {
+		$scope.products = response.data;
+	}, onError);
+	
 	
     $scope.addItem = function() {
         console.log("adding: ".concat($scope.addMe));
@@ -32,6 +31,7 @@ app.controller("addController",function ($scope,$http) {
         if(!$scope.addMe){
             return;
         }
+
 
 		var req_add = {
 			method: 'POST',
@@ -99,6 +99,4 @@ app.controller("addController",function ($scope,$http) {
 		}, onError);
        
     }
-	
-	loadInitialData();
 });
