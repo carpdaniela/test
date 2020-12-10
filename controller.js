@@ -11,18 +11,20 @@ app.controller("addController",function ($scope,$http) {
 		$scope.errorText = status;
 	}
 
-	var req = {
-		 method: 'GET',
-		 url: 'http://localhost:3000/todos',
-		 headers: {
-		   'Origin': "localhost:3000"
-		 }
+	var loadInitialData = function{
+		
+		var req = {
+			 method: 'GET',
+			 url: 'http://localhost:3000/todos',
+			 headers: {
+			   'Origin': "localhost:3000"
+			 }
+		}
+		
+		$http(req).then(function(response) {
+			$scope.products = response.data;
+		}, onError);
 	}
-
-	$http(req).then(function(response) {
-		$scope.products = response.data;
-	}, onError);
-	
 	
     $scope.addItem = function() {
         console.log("adding: ".concat($scope.addMe));
@@ -30,7 +32,6 @@ app.controller("addController",function ($scope,$http) {
         if(!$scope.addMe){
             return;
         }
-
 
 		var req_add = {
 			method: 'POST',
@@ -48,6 +49,7 @@ app.controller("addController",function ($scope,$http) {
         if(exist === false){
             $http(req_add).then(function(response) {
 					$scope.products = response.data;
+					$scope.addMe = "";
 		}, onError);
         }else{
             $scope.errorText = "This item already exist in your Todo List!";
@@ -59,9 +61,7 @@ app.controller("addController",function ($scope,$http) {
         console.log("deleting");
         //$scope.products.splice(index,1);
 		
-		var newMsg = todo.msg.replaceAll(" ", "%20");
-		
-		
+	
 		var req_del = {
 			method: 'DELETE',
 			url: 'http://localhost:3000/todos/remove/?msg='+newMsg,  //.concat(newMsg)
@@ -75,7 +75,6 @@ app.controller("addController",function ($scope,$http) {
 			
 		}, onError);
 		
-		
     }
 	
     $scope.changeState = function(todo) {
@@ -83,8 +82,6 @@ app.controller("addController",function ($scope,$http) {
 		console.log("status is: ".concat(todo.done));
 		
 		console.log($scope.products);
-		
-		var newMsg = todo.msg.replaceAll(" ", "%20");
 
 		var req_update = {
 			method: 'PUT',
@@ -102,7 +99,6 @@ app.controller("addController",function ($scope,$http) {
 		}, onError);
        
     }
+	
+	loadInitialData();
 });
-function changeState (item){
-    alert("hello");
-}
