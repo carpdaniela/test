@@ -41,7 +41,6 @@ app.controller("addController",function ($scope,$http) {
 			}),
 			headers: {
 				'Content-type': 'application/json',
-				'authToken': authToken
 			}
 		}
 		
