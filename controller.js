@@ -33,11 +33,8 @@ app.controller("addController",function ($scope,$http) {
 
 
 		var req_add = {
-			 method: 'POST',
-			 url: 'http://localhost:3000/todos/add/',  //.concat($scope.addMe,'/false')
-			 headers: {
-			   'Origin': "localhost:3000"
-				},
+			method: 'POST',
+			url: 'http://localhost:3000/todos/add/',  //.concat($scope.addMe,'/false')
 			data: {
 				msg: $scope.addMe,
 				done: 'false'
@@ -70,11 +67,8 @@ app.controller("addController",function ($scope,$http) {
 		
 		
 		var req_del = {
-			 method: 'DELETE',
-			 url: 'http://localhost:3000/todos/remove/',  //.concat(newMsg)
-			 headers: {
-			   'Origin': "localhost:3000"
-			},
+			method: 'DELETE',
+			url: 'http://localhost:3000/todos/remove/',  //.concat(newMsg)
 			data: {
 				msg: newMsg
 			}
@@ -102,9 +96,6 @@ app.controller("addController",function ($scope,$http) {
 		var req_update = {
 			method: 'PUT',
 			url: 'http://localhost:3000/todos/update/', //.concat(newMsg,'/',todo.done)
-			headers: {
-				'Origin': "localhost:3000"
-			},
 			data: {
 				msg: newMsg,
 				done: todo.done
