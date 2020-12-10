@@ -34,14 +34,7 @@ app.controller("addController",function ($scope,$http) {
 
 		var req_add = {
 			method: 'POST',
-			url: 'http://localhost:3000/todos/add/',  //.concat($scope.addMe,'/false')
-			data:  JSON.stringify({
-				msg: $scope.addMe,
-				done: 'false'
-			}),
-			headers: {
-				'Content-type': 'application/json',
-			}
+			url: 'http://localhost:3000/todos/add/?msg='+$scope.addMe+'&done=false',  //.concat($scope.addMe,'/false')
 		}
 		
 		console.log(req_add);
