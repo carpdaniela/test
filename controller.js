@@ -57,7 +57,7 @@ app.controller("addController",function ($scope,$http) {
             }
         });
         if(exist === false){
-            $http.post(url, data).then(function(response) {
+            $http.post(url, JSON.stringify(data)).then(function(response) {
 					$scope.products = response.data;
 		}, onError);
         }else{
