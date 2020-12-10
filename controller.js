@@ -37,12 +37,14 @@ app.controller("addController",function ($scope,$http) {
 			 url: 'http://localhost:3000/todos/add/',  //.concat($scope.addMe,'/false')
 			 headers: {
 			   'Origin': "localhost:3000"
-			},
+				},
 			data: {
 				msg: $scope.addMe,
 				done: 'false'
 			}
 		}
+		
+		console.log(req_add);
 
 		var exist = false;
         $scope.products.forEach(element => {
@@ -66,6 +68,7 @@ app.controller("addController",function ($scope,$http) {
 		
 		var newMsg = todo.msg.replaceAll(" ", "%20");
 		
+		
 		var req_del = {
 			 method: 'DELETE',
 			 url: 'http://localhost:3000/todos/remove/',  //.concat(newMsg)
@@ -77,7 +80,7 @@ app.controller("addController",function ($scope,$http) {
 			}
 		}
 		
-		console.log(req_del.url);
+		console.log(req_del);
 
 
 		$http(req_del).then(function(response) {
@@ -107,6 +110,8 @@ app.controller("addController",function ($scope,$http) {
 				done: todo.done
 			}
 		}
+		
+		console.log(req_update);
 
 		console.log(req_update.url);
 
