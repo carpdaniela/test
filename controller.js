@@ -35,20 +35,14 @@ app.controller("addController",function ($scope,$http) {
 		var req_add = {
 			method: 'POST',
 			url: 'http://localhost:3000/todos/add/',  //.concat($scope.addMe,'/false')
-			data: {
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			data: $.param({
 				msg: $scope.addMe,
 				done: 'false'
-			}
+			})
 		}
 		
-		var method = 'POST';
-		var url = 'http://localhost:3000/todos/add/';  //.concat($scope.addMe,'/false')
-		var data = {
-			msg: $scope.addMe,
-			done: 'false'
-		}
-		
-		//console.log(req_add);
+		console.log(req_add);
 
 		var exist = false;
         $scope.products.forEach(element => {
@@ -57,7 +51,7 @@ app.controller("addController",function ($scope,$http) {
             }
         });
         if(exist === false){
-            $http.post(url, JSON.stringify(data)).then(function(response) {
+            $http(req_add).then(function(response) {
 					$scope.products = response.data;
 		}, onError);
         }else{
