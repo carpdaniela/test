@@ -36,10 +36,27 @@ app.controller("addController",function ($scope,$http) {
 			method: 'POST',
 			url: 'http://localhost:3000/todos/add/',  //.concat($scope.addMe,'/false')
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-			data: $httpParamSerializer({
+			data: {
 				msg: $scope.addMe,
 				done: 'false'
-			})
+			},
+			transformRequest: function(obj) {
+				var str = [];
+				for (var key in obj) {
+					if (obj[key] instanceof Array) {
+						for(var idx in obj[key]){
+							var subObj = obj[key][idx];
+							for(var subKey in subObj){
+								str.push(encodeURIComponent(key) + "[" + idx + "][" + encodeURIComponent(subKey) + "]=" + encodeURIComponent(subObj[subKey]));
+							}
+						}
+					}
+					else {
+						str.push(encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]));
+					}
+				}
+				return str.join("&");
+			}
 		}
 		
 		console.log(req_add);
