@@ -41,7 +41,14 @@ app.controller("addController",function ($scope,$http) {
 			}
 		}
 		
-		console.log(req_add);
+		var method = 'POST';
+		var url = 'http://localhost:3000/todos/add/';  //.concat($scope.addMe,'/false')
+		var data = {
+			msg: $scope.addMe,
+			done: 'false'
+		}
+		
+		//console.log(req_add);
 
 		var exist = false;
         $scope.products.forEach(element => {
@@ -50,7 +57,7 @@ app.controller("addController",function ($scope,$http) {
             }
         });
         if(exist === false){
-            $http(req_add).then(function(response) {
+            $http.post(url, data).then(function(response) {
 					$scope.products = response.data;
 		}, onError);
         }else{
