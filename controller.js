@@ -34,10 +34,14 @@ app.controller("addController",function ($scope,$http) {
 
 		var req_add = {
 			 method: 'POST',
-			 url: 'http://localhost:1323/todos/'.concat($scope.addMe,'/false'),
+			 url: 'http://localhost:1323/todos/add/',  //.concat($scope.addMe,'/false')
 			 headers: {
 			   'Origin': "localhost:1323"
-				}
+			},
+			data: {
+				msg: $scope.addMe,
+				done: 'false'
+			}
 		}
 
 		var exist = false;
@@ -63,10 +67,13 @@ app.controller("addController",function ($scope,$http) {
 		var newMsg = todo.msg.replaceAll(" ", "%20");
 		
 		var req_del = {
-		 method: 'DELETE',
-		 url: 'http://localhost:1323/todos/'.concat(newMsg),
-		 headers: {
-		   'Origin': "localhost:1323"
+			 method: 'DELETE',
+			 url: 'http://localhost:1323/todos/remove/',  //.concat(newMsg)
+			 headers: {
+			   'Origin': "localhost:1323"
+			},
+			data: {
+				msg: newMsg
 			}
 		}
 		
@@ -91,9 +98,13 @@ app.controller("addController",function ($scope,$http) {
 
 		var req_update = {
 			method: 'PUT',
-			url: 'http://localhost:1323/todos/'.concat(newMsg,'/',todo.done),
+			url: 'http://localhost:1323/todos/update/', //.concat(newMsg,'/',todo.done)
 			headers: {
 				'Origin': "localhost:1323"
+			},
+			data: {
+				msg: newMsg,
+				done: todo.done
 			}
 		}
 
