@@ -36,7 +36,7 @@ app.controller("addController",function ($scope,$http) {
 			method: 'POST',
 			url: 'http://localhost:3000/todos/add/',  //.concat($scope.addMe,'/false')
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-			data: $.param({
+			data: $httpParamSerializer({
 				msg: $scope.addMe,
 				done: 'false'
 			})
