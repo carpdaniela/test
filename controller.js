@@ -13,9 +13,9 @@ app.controller("addController",function ($scope,$http) {
 
 	var req = {
 		 method: 'GET',
-		 url: 'http://localhost:1323/todos',
+		 url: 'http://localhost:3000/todos',
 		 headers: {
-		   'Origin': "localhost:1323"
+		   'Origin': "localhost:3000"
 		 }
 	}
 
@@ -34,9 +34,9 @@ app.controller("addController",function ($scope,$http) {
 
 		var req_add = {
 			 method: 'POST',
-			 url: 'http://localhost:1323/todos/add/',  //.concat($scope.addMe,'/false')
+			 url: 'http://localhost:3000/todos/add/',  //.concat($scope.addMe,'/false')
 			 headers: {
-			   'Origin': "localhost:1323"
+			   'Origin': "localhost:3000"
 			},
 			data: {
 				msg: $scope.addMe,
@@ -68,9 +68,9 @@ app.controller("addController",function ($scope,$http) {
 		
 		var req_del = {
 			 method: 'DELETE',
-			 url: 'http://localhost:1323/todos/remove/',  //.concat(newMsg)
+			 url: 'http://localhost:3000/todos/remove/',  //.concat(newMsg)
 			 headers: {
-			   'Origin': "localhost:1323"
+			   'Origin': "localhost:3000"
 			},
 			data: {
 				msg: newMsg
@@ -98,9 +98,9 @@ app.controller("addController",function ($scope,$http) {
 
 		var req_update = {
 			method: 'PUT',
-			url: 'http://localhost:1323/todos/update/', //.concat(newMsg,'/',todo.done)
+			url: 'http://localhost:3000/todos/update/', //.concat(newMsg,'/',todo.done)
 			headers: {
-				'Origin': "localhost:1323"
+				'Origin': "localhost:3000"
 			},
 			data: {
 				msg: newMsg,
